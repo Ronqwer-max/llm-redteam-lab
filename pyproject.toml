@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-redteam-lab"
+version = "1.0.0"
+description = "Adversarial red-team harness for probing LLM applications: direct prompt injection, evolutionary jailbreak search, agent privilege escalation, memory extraction, and multimodal injection."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "LLM RedTeam Lab contributors" }]
+keywords = [
+    "llm-security",
+    "prompt-injection",
+    "jailbreak",
+    "red-teaming",
+    "agent-security",
+    "multimodal",
+    "ai-security",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+# Zero runtime dependencies: everything runs on the standard library.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+# The OpenAI-compatible target uses stdlib urllib, no SDK required.
+
+[project.scripts]
+redteam = "redteam.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Ronqwer-max/llm-redteam-lab"
+Issues = "https://github.com/Ronqwer-max/llm-redteam-lab/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

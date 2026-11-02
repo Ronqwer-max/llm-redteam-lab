@@ -1,0 +1,24 @@
+# Hardened variant: same campaign, but every simulated weakness is patched.
+# Expected result: zero findings. Useful as a regression test that your
+# detections actually fire on the vulnerable config and stay quiet on this one.
+
+[run]
+name = "hardened-regression"
+seed = 1337
+
+[target]
+type = "mock"
+persona = "support"
+
+[target.vulnerable]
+system_prompt = false
+policy = false
+memory = false
+attachment_ocr = false
+prefix = false
+say = false
+tool_directives = false
+
+[report]
+output_dir = "reports"
+fail_on = "high"
